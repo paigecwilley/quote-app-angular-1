@@ -1,0 +1,58 @@
+.search-column {
+	display:inline-block;
+	float: left;
+	width: 25%;
+}
+
+#author-list {
+	max-height: 350px;
+	overflow:scroll;
+}
+
+#quote-block {
+	display: inline-block;
+	float:right;
+	width: 70%;
+	text-align: center;
+	padding-top: 10%;
+}
+
+#quote-list {
+	text-align: left;
+	max-height: 200px;
+	overflow: scroll;
+}
+
+#quote-list li {
+	list-style-type: none;
+	padding: 10px;
+}
+
+#author-names {
+	padding: 10px;
+	border-bottom-style: solid;
+	list-style-type: none;
+}
+
+#genre-list {
+	list-style-type: none;
+	-moz-column-count: 2;
+	-webkit-column-count:2;
+	column-count: 2;
+}
+
+#genre-list li button {
+	 width: 70%;
+   height: 30px;
+   text-align: center;
+   margin: 4px;
+}
+
+
+#add-quote-block {
+	width: 70%;
+	margin-top: 20%;
+	display:inline-block;
+	text-align: center;
+
+}

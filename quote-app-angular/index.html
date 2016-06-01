@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="quoteApp">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body ng-controller="quotesController">
+
+
+<div class="search-column">
+	<h2>Authors</h2>
+	<input type="text" placeholder="Search by author" ng-model="nameText.fullName"/>
+	<ul id="author-list">
+		<li id="author-names" ng-repeat="quote in quotes | filter:nameText | orderBy: 'lastName'">{{quote.fullName}}</li>
+	</ul>
+<div class="genre-search">
+<h2>Search by genre</h2>
+<ul id="genre-list">
+	<li ng-repeat="genre in quotes"><button>
+		{{genre.type}}</button></li>
+	</ul>		
+</div>
+</div>
+
+<div id="quote-block">
+<button ng-click="sayQuote()">Get Quote!</button>
+<h1>Your Quotes</h1>
+	<ul id="quote-list">
+		<li ng-repeat="quote in quotesList track by $index">{{quote.saying}} {{quote.fullName}}</li>
+	</ul>
+</div>
+<div id="add-quote-block">
+<button id="add-quote-button" ng-click="showForm =!showForm">Add your own quote!</button>
+	<div id="add-quote-form" ng-show="showForm">
+		<input type="text" placeholder="Quote"/> <input type="text" placeholder="First Name"/> <input type="text" placeholder="Last Name">
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/quotesController.js"></script>
+</body>
+</html>
