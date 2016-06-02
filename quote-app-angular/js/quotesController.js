@@ -106,24 +106,6 @@ var deDupe = function(){
 
 
 
-
-
-		// var deDupe = function(){
-		// 	if($scope.quotesList.length > 0) {
-		// 		for(var i = 0; i < $scope.quotesList.length; i++){
-		// 			if($scope.quotesList[i].saying === $scope.quotes[randomIndex].saying){
-		// 				console.log("randomIndex & saying: ", randomIndex, $scope.quotesList[i].saying);
-		// 				// console.log('It works');
-		// 				var newRandomIndex = Math.floor(Math.random()* $scope.quotes.length);
-		// 				console.log("newRandomIndex: ", newRandomIndex);
-		// 				createQuote(newRandomIndex);
-		// 			} 
-		// 		}
-		// 	} 
-		// }
-
-
-
 		if ($scope.quotes.length === $scope.quotesList.length){
 			alert("No more quotes! Add one!");
 			console.log("No more quotes!");
@@ -138,22 +120,27 @@ var deDupe = function(){
 		// var randomQuote = $scope.quotes.slice(randomIndex, randomSliceIndex)[0];
 		// $scope.quotesList.push(randomQuote);
 
-	
-
-
 
 	}
 
-	$scope.showForm = false;
+$scope.showForm = false;
 
-// for(var i = 0; i < $scope.quotes.length; i++){
-// 	if($scope.quotes[i].fullName && $scope.quotes[i].firstName && $scope.quotes[i].lastName){
-// 		 var author = {
-// 		 	firstName: $scope.quotes[i].firstName,
-// 		 	lastName: $scope.quotes[i].lastName,
-// 		 	fullName: $scope.quotes[i].fullName
-// 		 }
-// 	}
+$scope.quoteModel = {};
+$scope.quoteModel.saying = "A saying";
+$scope.quoteModel.firstName = "first name";
+$scope.quoteModel.lastName = "last name";
+$scope.quoteModel.fullName = "";
+
+$scope.submitQuote = function(){
+	// $scope.quoteModel.push($scope.quoteModel.saying).push($scope.quoteModel.firstName).push($scope.quoteModel.lastName);
+	console.log($scope.quoteModel);
+	$scope.quoteModel.fullName = $scope.quoteModel.firstName;
+	$scope.quotes.push($scope.quoteModel);
+	console.log($scope.quotes);
+
+}
+
+
 }
 
 
@@ -167,11 +154,6 @@ angular.module('quoteApp')
 
 
 /*
-Sort the authors by last name on the author column
-Create a "add quote button"
-When hit "add quote" button, a form expands
-The form will add a new item to the quotes
-Make the search portion scrollable and have the
-option to search by type/genre, which will expand 
-to show some genres.
+Add a quote to the quotes list
+
 */
