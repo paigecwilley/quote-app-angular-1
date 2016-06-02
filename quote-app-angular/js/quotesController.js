@@ -4,7 +4,7 @@ var quotesController = function($scope){
 
 	$scope.quotesList = [];
 
-$scope.quotes=[
+$scope.quotes = [
 		{saying:"All the world's a stage, and all the men and women mearly players.", firstName: "William", lastName:"Shakespeare", fullName: "William Shakespeare", type:"literary"},
 		{saying: "The greatest pleasure in life is doing what people say you cannot do.", firstName: "Walter", lastName: "Bagehot", fullName:"Walter Bagehot", type:"motivational"},
 		{saying: "Self-control means wanting to be effective at some random point in the infinite radiations of my spiritual existence.", firstName: "Franz", lastName:"Kafka", fullName: "Franz Kafka", type:"motivational"},
@@ -24,38 +24,141 @@ $scope.quotes=[
 	];
 
 
+	var getRandomIndex = function(){
+		return Math.floor(Math.random()* $scope.quotes.length);
+	}
+
 	$scope.sayQuote = function(){
-		var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
-		var randomSliceIndex = randomIndex + 1;
-		var randomQuote = $scope.quotes.slice(randomIndex, randomSliceIndex)[0];
-		console.log($scope.quotes[randomIndex]);
-		$scope.quotesList.push(randomQuote);
 
-	
+		console.log('\n');
+		// var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
 
-		// return {
-		// 	saying: randomQuote.saying,
-		// 	firstName: randomQuote.firstName,
-		// 	lastName: randomQuote.lastName
-		// }
 
-	}
 
-$scope.showForm = false;
+		//Function that creates the quote with the random index and pushes it
+		var createQuote = function(index){
+			console.log("createQuote index: ", index);
+			var randomSliceIndex = index + 1;
+			var randomQuote = $scope.quotes.slice(index, randomSliceIndex)[0];
+			return $scope.quotesList.push(randomQuote);
+		}
 
-for(var i = 0; i < $scope.quotes.length; i++){
-	if($scope.quotes[i].fullName && $scope.quotes[i].firstName && $scope.quotes[i].lastName){
-		 var author = {
-		 	firstName: $scope.quotes[i].firstName,
-		 	lastName: $scope.quotes[i].lastName,
-		 	fullName: $scope.quotes[i].fullName
-		 }
-	}
+		// console.log("init index: ", randomIndex);
+		
+
+
+
+var deDupe = function(){
+			
+			var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
+			
+			if($scope.quotesList.length === 0)
+			{
+				createQuote(randomIndex);
+			}
+
+			else
+			{
+				var clearToCreate = true;
+				for(var i = 0; i < $scope.quotesList.length; i++){
+					if($scope.quotesList[i].saying === $scope.quotes[randomIndex].saying)
+					{
+						clearToCreate = false;
+					}
+				}
+
+				if(clearToCreate) 
+				{
+					createQuote(randomIndex);
+					return true;
+				}
+				else
+				{
+					deDupe();
+				}
+
+			}
+
 }
 
 
 
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// var deDupe = function(){
+		// 	if($scope.quotesList.length > 0) {
+		// 		for(var i = 0; i < $scope.quotesList.length; i++){
+		// 			if($scope.quotesList[i].saying === $scope.quotes[randomIndex].saying){
+		// 				console.log("randomIndex & saying: ", randomIndex, $scope.quotesList[i].saying);
+		// 				// console.log('It works');
+		// 				var newRandomIndex = Math.floor(Math.random()* $scope.quotes.length);
+		// 				console.log("newRandomIndex: ", newRandomIndex);
+		// 				createQuote(newRandomIndex);
+		// 			} 
+		// 		}
+		// 	} 
+		// }
+
+
+
+		if ($scope.quotes.length === $scope.quotesList.length){
+			alert("No more quotes! Add one!");
+			console.log("No more quotes!");
+		} else {
+			console.log("quotes length: ", $scope.quotes.length);
+			console.log("quotesList length: ", $scope.quotesList.length);
+			deDupe();
+		}
+
+		// var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
+		// var randomSliceIndex = randomIndex + 1;
+		// var randomQuote = $scope.quotes.slice(randomIndex, randomSliceIndex)[0];
+		// $scope.quotesList.push(randomQuote);
+
+	
+
+
+
+	}
+
+	$scope.showForm = false;
+
+// for(var i = 0; i < $scope.quotes.length; i++){
+// 	if($scope.quotes[i].fullName && $scope.quotes[i].firstName && $scope.quotes[i].lastName){
+// 		 var author = {
+// 		 	firstName: $scope.quotes[i].firstName,
+// 		 	lastName: $scope.quotes[i].lastName,
+// 		 	fullName: $scope.quotes[i].fullName
+// 		 }
+// 	}
+}
+
+
+
+
 
 angular.module('quoteApp')
 	.controller('quotesController', quotesController);
