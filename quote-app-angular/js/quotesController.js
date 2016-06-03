@@ -1,6 +1,7 @@
-(function(){
+angular.module('quoteApp')
+	.controller('quotesController', function($scope){
 
-var quotesController = function($scope){
+
 
 	$scope.quotesList = [];
 
@@ -83,29 +84,6 @@ var deDupe = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		if ($scope.quotes.length === $scope.quotesList.length){
 			alert("No more quotes! Add one!");
 			console.log("No more quotes!");
@@ -123,8 +101,10 @@ var deDupe = function(){
 
 	}
 
+//Hiding the form--showing on click
 $scope.showForm = false;
 
+//Adding a quote model
 $scope.quoteModel = {};
 $scope.quoteModel.saying = "A saying";
 $scope.quoteModel.firstName = "first name";
@@ -141,16 +121,18 @@ $scope.submitQuote = function(){
 }
 
 
-}
+
+
+
+// } What is that
 
 
 
 
+});
 
-angular.module('quoteApp')
-	.controller('quotesController', quotesController);
 
-}());
+
 
 
 /*
