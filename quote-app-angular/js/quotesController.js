@@ -29,7 +29,6 @@ $scope.quotes = [
 		{saying:"The best thing to hold onto in life is each other.", firstName:"Audrey", lastName:"Hepburn", fullName: "Audrey Hepburn", type:"love"},
 		{saying:"Poetry is when an emotion has found its thought adn the thought has found words.", firstName:"Robert", lastName:"Frost", fullName: "Robert Frost", type:"poetry"},
 		{saying: "If music be the food of love, play on.", firstName:"William", lastName: "Shakespeare", fullName: "William Shakespeare", genre: "love"}
-
 	];
 
 
@@ -39,8 +38,26 @@ $scope.quotes = [
 
 	var searchLists = function(authorFirstName, authorLastName, authorFullName, genre){
 		function onlyUnique(value, index, arr){
-			console.log(value.fullName);
-				return arr.indexOf(value.fullName) === index;
+			for(var i = 0; i < arr.length; i++) {
+				if(value.fullName === arr[i].fullName) {
+					if(i !== index)
+					{
+						return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+			}
+			// console.log(value.fullName);
+			// 	return arr.indexOf(value.fullName) === index;
+			// for(var i = 0; i < arr.length; i++){
+			// 	// if(value.fullName === arr[index].fullName){
+			// 	// 	return i === index;	
+			// 	// }
+			// 	console.log(value.fullName, " : ", arr[index].fullName);
+			// }
 		}
 
 		for(var i = 0; i < $scope.quotes.length; i++){
@@ -52,6 +69,7 @@ $scope.quotes = [
 			$scope.authorsList.push(tempAuthor);
 		}
 		// console.log($scope.authorsList);
+		// $scope.authorsList = $scope.authorsList.filter(onlyUnique);
 		$scope.authorsList = $scope.authorsList.filter(onlyUnique);
 		console.log($scope.authorsList);
 
