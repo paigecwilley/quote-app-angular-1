@@ -33,24 +33,38 @@ $scope.quotes = [
 	];
 
 
+
+
 	//Create de-duped author and genre lists for the search
 
 	var searchLists = function(authorFirstName, authorLastName, authorFullName, genre){
 		function onlyUnique(value, index, arr){
-				return arr.indexOf(value) === index;
+			console.log(value.fullName);
+				return arr.indexOf(value.fullName) === index;
 		}
 
 		for(var i = 0; i < $scope.quotes.length; i++){
-			$scope.quoteModel.firstName = $scope.quotes[i][authorFirstName];
-			$scope.quoteModel.lastName = $scope.quotes[i][authorLastName];
-			$scope.quoteModel.fullName = $scope.quotes[i][authorFullName];
+			var tempAuthor = {};
+			tempAuthor.firstName = $scope.quotes[i][authorFirstName];
+			tempAuthor.lastName = $scope.quotes[i][authorLastName];
+			tempAuthor.fullName = $scope.quotes[i][authorFullName];
 						
-			$scope.authorsList.push($scope.quoteModel);
+			$scope.authorsList.push(tempAuthor);
 		}
+		// console.log($scope.authorsList);
+		$scope.authorsList = $scope.authorsList.filter(onlyUnique);
+		console.log($scope.authorsList);
 
 	}
 
 searchLists('firstName', 'lastName', 'fullName');
+
+	
+
+
+
+
+
 
 	var getRandomIndex = function(){
 		return Math.floor(Math.random()* $scope.quotes.length);
