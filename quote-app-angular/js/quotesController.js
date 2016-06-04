@@ -1,9 +1,17 @@
 angular.module('quoteApp')
 	.controller('quotesController', function($scope){
 
+//Adding a quote model
+$scope.quoteModel = {};
+$scope.quoteModel.saying = "";
+$scope.quoteModel.firstName = "first name";
+$scope.quoteModel.lastName = "last name";
+$scope.quoteModel.fullName = "";
 
 
 	$scope.quotesList = [];
+
+	$scope.authorsList = [];
 
 $scope.quotes = [
 		{saying:"All the world's a stage, and all the men and women mearly players.", firstName: "William", lastName:"Shakespeare", fullName: "William Shakespeare", type:"literary"},
@@ -25,10 +33,31 @@ $scope.quotes = [
 	];
 
 
+	//Create de-duped author and genre lists for the search
+
+	var searchLists = function(authorFirstName, authorLastName, authorFullName, genre){
+		function onlyUnique(value, index, arr){
+				return arr.indexOf(value) === index;
+		}
+
+		for(var i = 0; i < $scope.quotes.length; i++){
+			$scope.quoteModel.firstName = $scope.quotes[i][authorFirstName];
+			$scope.quoteModel.lastName = $scope.quotes[i][authorLastName];
+			$scope.quoteModel.fullName = $scope.quotes[i][authorFullName];
+						
+			$scope.authorsList.push($scope.quoteModel);
+		}
+
+	}
+
+searchLists('firstName', 'lastName', 'fullName');
+
 	var getRandomIndex = function(){
 		return Math.floor(Math.random()* $scope.quotes.length);
 	}
 
+
+//The "Say Quote " function
 	$scope.sayQuote = function(){
 
 		console.log('\n');
@@ -104,12 +133,6 @@ var deDupe = function(){
 //Hiding the form--showing on click
 $scope.showForm = false;
 
-//Adding a quote model
-$scope.quoteModel = {};
-$scope.quoteModel.saying = "A saying";
-$scope.quoteModel.firstName = "first name";
-$scope.quoteModel.lastName = "last name";
-$scope.quoteModel.fullName = "";
 
 $scope.submitQuote = function(){
 	// $scope.quoteModel.push($scope.quoteModel.saying).push($scope.quoteModel.firstName).push($scope.quoteModel.lastName);
@@ -121,10 +144,6 @@ $scope.submitQuote = function(){
 }
 
 
-
-
-
-// } What is that
 
 
 
