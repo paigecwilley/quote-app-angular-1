@@ -8,10 +8,11 @@ $scope.quoteModel.firstName = "first name";
 $scope.quoteModel.lastName = "last name";
 $scope.quoteModel.fullName = "";
 
-
+	
 	$scope.quotesList = [];
 
 	$scope.authorsList = [];
+	$scope.genresList = [];
 
 $scope.quotes = [
 		{saying:"All the world's a stage, and all the men and women mearly players.", firstName: "William", lastName:"Shakespeare", fullName: "William Shakespeare", type:"literary"},
@@ -62,20 +63,26 @@ $scope.quotes = [
 
 		for(var i = 0; i < $scope.quotes.length; i++){
 			var tempAuthor = {};
+			var tempGenre = {};
 			tempAuthor.firstName = $scope.quotes[i][authorFirstName];
 			tempAuthor.lastName = $scope.quotes[i][authorLastName];
 			tempAuthor.fullName = $scope.quotes[i][authorFullName];
+			tempGenre.genre = $scope.quotes[i][genre];
+
 						
 			$scope.authorsList.push(tempAuthor);
+			$scope.genresList.push(tempGenre);
 		}
 		// console.log($scope.authorsList);
 		// $scope.authorsList = $scope.authorsList.filter(onlyUnique);
 		$scope.authorsList = $scope.authorsList.filter(onlyUnique);
-		console.log($scope.authorsList);
+		console.log($scope.genresList);
 
 	}
 
-searchLists('firstName', 'lastName', 'fullName');
+searchLists('firstName', 'lastName', 'fullName', 'type');
+
+
 
 	
 
