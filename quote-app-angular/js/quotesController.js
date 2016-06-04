@@ -38,9 +38,9 @@ $scope.quotes = [
 	//Create de-duped author and genre lists for the search
 
 	var searchLists = function(authorFirstName, authorLastName, authorFullName, genre){
-		function onlyUnique(value, index, arr){
+		function onlyUnique(value, index, arr, prop){
 			for(var i = 0; i < arr.length; i++) {
-				if(value.fullName === arr[i].fullName) {
+				if(value[prop] === arr[i][prop]) {
 					if(i !== index)
 					{
 						return false;
@@ -73,11 +73,18 @@ $scope.quotes = [
 			$scope.authorsList.push(tempAuthor);
 			$scope.genresList.push(tempGenre);
 		}
-		// console.log($scope.authorsList);
-		// $scope.authorsList = $scope.authorsList.filter(onlyUnique);
-		$scope.authorsList = $scope.authorsList.filter(onlyUnique);
-		console.log($scope.genresList);
 
+
+		// $scope.authorsList = $scope.authorsList.filter(onlyUnique);
+		$scope.authorsList = $scope.authorsList.filter(function(v, i, a){
+			return onlyUnique(v, i, a, 'fullName');
+		});
+		
+
+		$scope.genresList = $scope.genresList.filter(function(v, i, a){
+			return onlyUnique(v, i, a, 'genre')
+		})
+		console.log($scope.genresList);
 	}
 
 searchLists('firstName', 'lastName', 'fullName', 'type');
