@@ -17,6 +17,8 @@ html, body {
 	overflow:scroll;
 }
 
+
+
 #quotes-container {
 	/*display:inline-block;*/
 	float:right;
@@ -53,6 +55,14 @@ html, body {
 	padding: 10px;
 	border-bottom-style: solid;
 	list-style-type: none;
+	font-family: Arial;
+	font-weight: bold;
+	text-align: center;
+	font-size: 20px;
+}
+
+#author-list {
+	padding:0;
 }
 
 #genre-list {
@@ -69,6 +79,10 @@ html, body {
    margin: 4px;
 }
 
+a {
+	color:black;
+	text-decoration: none;
+}
 /*lightest green: #F6FCED
 */
 
