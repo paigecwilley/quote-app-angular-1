@@ -1,5 +1,4 @@
-angular.module('quoteApp')
-	.controller('quotesController', function($scope){
+app.controller('quotesController', function($scope){
 
 //Adding a quote model
 $scope.quoteModel = {};
@@ -9,7 +8,7 @@ $scope.quoteModel.lastName = "last name";
 $scope.quoteModel.fullName = "";
 
 	
-	$scope.quotesList = [];
+	
 
 	$scope.authorsList = [];
 	$scope.genresList = [];
@@ -103,91 +102,7 @@ searchLists('firstName', 'lastName', 'fullName', 'type');
 	}
 
 
-//The "Say Quote " function
-	$scope.sayQuote = function(){
 
-		console.log('\n');
-		// var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
-
-
-
-		//Function that creates the quote with the random index and pushes it
-		var createQuote = function(index){
-			console.log("createQuote index: ", index);
-			var randomSliceIndex = index + 1;
-			var randomQuote = $scope.quotes.slice(index, randomSliceIndex)[0];
-			return $scope.quotesList.push(randomQuote);
-		}
-
-		// console.log("init index: ", randomIndex);
-		
-
-
-
-var deDupe = function(){
-			
-			var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
-			
-			if($scope.quotesList.length === 0)
-			{
-				createQuote(randomIndex);
-			}
-
-			else
-			{
-				var clearToCreate = true;
-				for(var i = 0; i < $scope.quotesList.length; i++){
-					if($scope.quotesList[i].saying === $scope.quotes[randomIndex].saying)
-					{
-						clearToCreate = false;
-					}
-				}
-
-				if(clearToCreate) 
-				{
-					createQuote(randomIndex);
-					return true;
-				}
-				else
-				{
-					deDupe();
-				}
-
-			}
-
-}
-
-
-
-		if ($scope.quotes.length === $scope.quotesList.length){
-			alert("No more quotes! Add one!");
-			console.log("No more quotes!");
-		} else {
-			console.log("quotes length: ", $scope.quotes.length);
-			console.log("quotesList length: ", $scope.quotesList.length);
-			deDupe();
-		}
-
-		// var randomIndex = Math.floor(Math.random()* $scope.quotes.length);
-		// var randomSliceIndex = randomIndex + 1;
-		// var randomQuote = $scope.quotes.slice(randomIndex, randomSliceIndex)[0];
-		// $scope.quotesList.push(randomQuote);
-
-
-	}
-
-//Hiding the form--showing on click
-$scope.showForm = false;
-
-
-$scope.submitQuote = function(){
-	// $scope.quoteModel.push($scope.quoteModel.saying).push($scope.quoteModel.firstName).push($scope.quoteModel.lastName);
-	console.log($scope.quoteModel);
-	$scope.quoteModel.fullName = $scope.quoteModel.firstName;
-	$scope.quotes.push($scope.quoteModel);
-	console.log($scope.quotes);
-
-}
 
 
 
@@ -195,12 +110,3 @@ $scope.submitQuote = function(){
 
 
 });
-
-
-
-
-
-/*
-Add a quote to the quotes list
-
-*/
