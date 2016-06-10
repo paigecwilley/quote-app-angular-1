@@ -9,7 +9,7 @@
 	overflow:scroll;
 }
 
-#quote-block {
+.quote-block {
 	display: inline-block;
 	float:right;
 	width: 70%;

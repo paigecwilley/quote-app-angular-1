@@ -11,7 +11,7 @@
 		<h2>Authors</h2>
 		<input type="text" placeholder="Search by author" ng-model="nameText.fullName"/>
 		<ul id="author-list">
-			<li id="author-names" ng-repeat="authors in authorsList" |  filter:nameText | orderBy: 'lastName'"><a href="#/{{authors.fullName}}">{{authors.firstName}} {{authors.lastName}}</a></li>
+			<li id="author-names" ng-repeat="authors in authorsList |  filter:nameText | orderBy: 'lastName'"><a href="#/{{authors.fullName}}">{{authors.firstName}} {{authors.lastName}}</a></li>
 		</ul>
 		<div class="genre-search">
 			<h2>Search by genre</h2>
