@@ -1,7 +1,15 @@
+html, body {
+	padding: 2%;
+	background-color: #F6FCF4;
+	background-image: url("http://www.transparenttextures.com/patterns/fabric-plaid.png");
+}
+
 .search-column {
 	display:inline-block;
 	float: left;
 	width: 25%;
+	background-color: #D9ECBE;
+	padding-right: .5%
 }
 
 #author-list {
@@ -9,12 +17,25 @@
 	overflow:scroll;
 }
 
-.quote-block {
-	display: inline-block;
+#quotes-container {
+	/*display:inline-block;*/
 	float:right;
-	width: 70%;
+	width:70%;
+	height:700px;
+	background-color:#D9ECBE;
+}
+
+ .quote-block {
+	/*display: inline-block;*/
+	/*float:right;*/
+	width: 95%;
+	min-height: 400px;
 	text-align: center;
 	padding-top: 10%;
+	background-color: whitesmoke;
+	position: relative;
+	top: 20px;
+	left: 20px;
 }
 
 #quote-list {
@@ -47,6 +68,9 @@
    text-align: center;
    margin: 4px;
 }
+
+/*lightest green: #F6FCED
+*/
 
 
 #add-quote-block {
