@@ -9,14 +9,10 @@
 					controller: 'addQuotesController',
 					templateUrl: 'views/quotes.html'
 				})
-				.when('/:authorName', {
+				.when('/:sortBy', {
 					controller: 'authorController',
 					templateUrl: 'views/authors.html'
 				})
-
-
-
-
 
 
 

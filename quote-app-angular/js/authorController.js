@@ -1,24 +1,24 @@
 app.controller('authorController', function($scope, $routeParams, $timeout){
 
-var authorName = $routeParams.authorName;
-$scope.authorQuotes = [];
+var sortBy = $routeParams.sortBy;
+
+$scope.sortedQuotes = [];
 
 
 
 
-function init(){
+function init(sort){
 	for(var i = 0; i < $scope.quotes.length; i++){
-	 if($scope.quotes[i].fullName === authorName){
+	 if($scope.quotes[i][sort] === sortBy){
 	 		console.log($scope.quotes[i].saying);
-	 		$scope.authorQuotes.push($scope.quotes[i].saying);
-	 		 
-	 		 console.log($scope.authorQuotes);
+	 		$scope.sortedQuotes.push($scope.quotes[i].saying);
 	 }
 	}
 
 }
 
-init();
+init("fullName");
+init("type");
 
 
 
